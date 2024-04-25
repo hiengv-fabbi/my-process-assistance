@@ -1,12 +1,12 @@
 import React, { useState, useEffect, useRef } from 'react';
 import fromCDN from 'from-cdn';
-import Button from './Button';
+// import Button from './Button';
 
-import { networkData, simlaneExport } from '../static/data';
+import { networkData, simlaneExport, customNetworkData } from '../static/data';
 
 const LinkCdn = [
-  'https://webix.io/dev/dhtmlx/diagram/diagram_4.0/codebase/diagramWithEditor.css',
-  'https://webix.io/dev/dhtmlx/diagram/diagram_4.0/codebase/diagramWithEditor.js',
+  'https://webix.io/dev/dhtmlx/diagram/diagram_5.0/codebase/diagramWithEditor.css',
+  'https://webix.io/dev/dhtmlx/diagram/diagram_5.0/codebase/diagramWithEditor.js',
 ];
 
 const path = './common/img/network';
@@ -43,16 +43,18 @@ const regularGroup = {
   },
 };
 
-const core = { type: 'networkCard', img: `${path}/core.svg` };
+const coreShape = { type: 'networkCard', img: `${path}/core.svg` };
 const server = { type: 'networkCard', img: `${path}/server.svg` };
 const cloud = { type: 'networkCard', img: `${path}/cloud.svg` };
 const user = { type: 'networkCard', img: `${path}/fieldworker.svg` };
 const desktop = { type: 'networkCard', img: `${path}/desktop.svg` };
 
 const shapeSections = {
-  'Network Shapes': [core, server, cloud, user, desktop],
-  Groups: [collapseGroup, regularGroup],
+  'Network Shapes': [coreShape],
+  // Groups: [collapseGroup, regularGroup],
 };
+
+const URL_EXPORT = 'https://export.dhtmlx.com';
 
 const templateNetworkCard = ({ img, text, ip }) => {
   return `
@@ -62,6 +64,20 @@ const templateNetworkCard = ({ img, text, ip }) => {
       <span>${ip}</span>
     </section>
   `;
+};
+
+const ControlBtn = ({ onClick, name, disabled }) => {
+  return (
+    <div>
+      <button
+        className="dhx_sample-btn dhx_sample-btn--flat"
+        onClick={onClick}
+        disabled={!!disabled}
+      >
+        {name}
+      </button>
+    </div>
+  );
 };
 
 const DefaultEditorCustomShape = () => {
@@ -107,12 +123,12 @@ const DefaultEditorCustomShape = () => {
 
         diagram.current.addShape('networkCard', {
           template: templateNetworkCard,
-          defaults: defaults,
+          // defaults: defaults,
         });
 
         editor.current.events.on('ApplyButton', applyButton);
         editor.current.events.on('ResetButton', resetButton);
-        diagram.current.data.parse(simlaneExport);
+        diagram.current.data.parse(customNetworkData);
       };
 
       const destroyDiagram = () => {
@@ -143,6 +159,21 @@ const DefaultEditorCustomShape = () => {
     setCollapsed(true);
   };
 
+  function exportFile(file) {
+    diagram.current.export[file]({
+      url: `${URL_EXPORT}/chart/${file}/8.0`,
+      theme: 'dark',
+    });
+  }
+
+  const handleExportPdf = () => {
+    exportFile('pdf');
+  };
+
+  const handleExportPng = () => {
+    exportFile('png');
+  };
+
   return (
     <div
       className={
@@ -151,7 +182,23 @@ const DefaultEditorCustomShape = () => {
           : 'dhx-container_inner dhx_sample-container__with-editor'
       }
     >
-      {collapsed && <Button name="Edit Mode" onClick={runEditor} />}
+      <div className="dhx_wrap_btn">
+        {collapsed && <ControlBtn name="Edit Mode" onClick={runEditor} />}
+        {collapsed && (
+          <ControlBtn
+            name="EXPORT PNG"
+            onClick={handleExportPng}
+            disabled={true}
+          />
+        )}
+        {collapsed && (
+          <ControlBtn
+            name="EXPORT PDF"
+            onClick={handleExportPdf}
+            disabled={true}
+          />
+        )}
+      </div>
       <div
         className="dhx_sample-widget"
         id="diagram"

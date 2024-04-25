@@ -127,3 +127,29 @@
   pointer-events: none;
   border-radius: 50%;
 }
+
+/* custom */
+.dhx_wrap_btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 60px;
+  height: 60px;
+  border-bottom: 1px solid #dfdfdf;
+  font-family: Roboto, Arial, Tahoma, Verdana, sans-serif;
+  font-size: 14px;
+}
+
+.dhx_wrap_btn .dhx_sample-btn {
+  margin-right: 10px;
+}
+.dhx_wrap_btn .dhx_sample-btn:disabled {
+  background-color: gray !important;
+  cursor: auto;
+}
+
+
+.dhx_sample-widget.dhx_sample-widget__without-editor_left_pane
+.dhx_layout-cell.dhx_diagram_editor_shapebar__container {
+  display: none;
+}

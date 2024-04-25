@@ -1,8 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import App from './App.jsx';
+// import App from './App.jsx';
 import reportWebVitals from './reportWebVitals';
-
+import TemplateProcess from './pages/TemplateProcess';
+import BlueprintTemplate from './pages/BlueprintTemplate';
 
 import './index.css';
 // import './static/css/diagramWithEditor.css';
@@ -10,7 +11,9 @@ import './index.css';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <App />
+  // <BlueprintTemplate />
+  <TemplateProcess />
+  // <App />
   // <React.StrictMode>
   // </React.StrictMode>
 );

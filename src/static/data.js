@@ -1047,8 +1047,8 @@ export const simlaneExport = [
   {
     id: 'main',
     type: '$swimlane',
-    height: 380,
-    width: 560,
+    height: 680,
+    width: 1060,
     header: {
       closable: true,
       text: 'Swimlane diagram template',
@@ -3421,6 +3421,117 @@ export const mindmapData = [
   },
 ];
 
+export const customNetworkData = [
+  // {
+  //   id: 1,
+  //   type: 'networkCard',
+  //   x: 0,
+  //   y: 0,
+  //   img: './common/img/network/desktop.svg',
+  //   text: 'Shape 1',
+  //   ip: '192.168.32.2',
+  //   fixed: true,
+  // },
+  {
+    id: 1,
+    type: 'networkCard',
+    x: 200,
+    y: 380,
+    img: './common/img/network/desktop.svg',
+    text: 'Shape 1',
+    ip: '192.168.32.2',
+    width: 160,
+    height: 160,
+    // fixed: true,
+    
+    draggable: false,
+    editable: false,
+    hidden: false
+  },
+  {
+    id: 2,
+    type: 'networkCard',
+    x: 400,
+    y: 100,
+    img: './common/img/network/cloud.svg',
+    text: 'Shape 2',
+    ip: '192.168.1.4',
+    width: 160,
+    height: 160,
+    // fixed: true,
+  },
+  {
+    id: 'u15844306506681',
+    type: 'line',
+    from: 1,
+    to: 2,
+    fromSide: 'top',
+    toSide: 'bottom',
+    connectType: 'elbow',
+    strokeType: 'line',
+    backArrow: 'filled',
+    forwardArrow: 'filled',
+    stroke: '#2196F3',
+    strokeWidth: 2,
+    cornersRadius: 0,
+    points: [
+      { x: 280, y: 380 },
+      { x: 280, y: 370 },
+      { x: 280, y: 270 },
+      { x: 480, y: 270 },
+      { x: 480, y: 260 },
+    ],
+    width: 200,
+    height: 120,
+    x: 280,
+    y: 380,
+    // fixed: true,
+  },
+  {
+    id: 'u1584430650668',
+    type: 'dash',
+    connectType: 'elbow',
+    strokeType: 'dash',
+    backArrow: '',
+    forwardArrow: 'filled',
+    points: [
+      { x: 10, y: 300 },
+      { x: 55, y: 200 },
+      { x: 110, y: 260 },
+      { x: 160, y: 140 },
+      { x: 250, y: 170 },
+      { x: 320, y: 30 },
+    ],
+    stroke: '#D73C2D',
+    strokeWidth: 2,
+    cornersRadius: 0,
+    width: 310,
+    height: 270,
+    x: 10,
+    y: 300,
+    customGap: 0,
+    fixed: true,
+
+    draggable: false,
+    editable: false,
+    hidden: false,
+
+    // title: {
+    //   fontSize: 14,
+    //   lineHeight: 14,
+    //   textAlign: 'center',
+    //   textVerticalAlign: 'center',
+    //   fontStyle: 'normal',
+    //   fontWeight: 'normal',
+    //   fontColor: '#4C4C4C',
+    //   fill: '#FFF',
+    //   draggable: true,
+    //   editable: true,
+    //   hidden: false,
+    // },
+  },
+];
+
 export const networkData = [
   {
     id: 1,
@@ -3666,3 +3777,10 @@ export const networkData = [
     forwardArrow: 'filled',
   },
 ];
+
+export const MY_LOCALE = {
+  applyAll: 'Apply',
+  exportData: 'Export',
+  importData: 'Import',
+  resetChanges: 'Reset',
+};
